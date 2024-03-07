@@ -43,36 +43,29 @@ REACT_APP_BACKEND_URL=${backend_url}
 REACT_APP_ENV_TOKEN=210897ugn217204u98u8jfo2983u5
 REACT_APP_HOURS_CLOSE_TICKETS_AUTO=9999999
 REACT_APP_FACEBOOK_APP_ID=1005318707427295
-REACT_APP_NAME_SYSTEM=${name_system}
+REACT_APP_NAME_SYSTEM=Automatizaai
 REACT_APP_VERSION="1.0.0"
-REACT_APP_PRIMARY_COLOR=${primary_color}
+REACT_APP_PRIMARY_COLOR=$#fffff
 REACT_APP_PRIMARY_DARK=2c3145
-REACT_APP_NUMBER_SUPPORT=${number_support}
+REACT_APP_NUMBER_SUPPORT=51997059551
 SERVER_PORT=3333
 WDS_SOCKET_PORT=0
 [-]EOF
 EOF
 
-  # Execute the substitution commands
+  sleep 2
+
+  # Execute a substituição nos arquivos
   sudo su - deployautomatizaai <<EOF
   cd /home/deployautomatizaai/whaticket/frontend
 
-  # Substitution commands
-  BACKEND_URL=\$(grep 'REACT_APP_BACKEND_URL' .env | cut -d'=' -f2)
-  NAME_SYSTEM=$(grep 'REACT_APP_NAME_SYSTEM' .env | cut -d'=' -f2)
-  PRIMARY_COLOR=\$(grep 'REACT_APP_PRIMARY_COLOR' .env | cut -d'=' -f2)
-  PRIMARY_DARK=\$(grep 'REACT_APP_PRIMARY_DARK' .env | cut -d'=' -f2)
-  NUMBER_SUPPORT=\$(grep 'REACT_APP_NUMBER_SUPPORT' .env | cut -d'=' -f2)
+   backend_url=$(grep 'REACT_APP_BACKEND_URL' /home/deployautomatizaai/whaticket/frontend/.env | cut -d'=' -f2)
 
-  sed -i "s|https://autoriza.dominio|\$BACKEND_URL|g" \$(grep -rl 'REACT_APP_BACKEND_URL' .)
-  grep -rl 'Automatiza' . | xargs sed -i "s|Automatiza AI|$NAME_SYSTEM|g"
-  sed -i "s|0b5394|\$PRIMARY_COLOR|g" \$(grep -rl 'REACT_APP_PRIMARY_COLOR' .)
-  sed -i "s|2c3145|\$PRIMARY_DARK|g" \$(grep -rl 'REACT_APP_PRIMARY_DARK' .)
-  sed -i "s|5551997058551|\$NUMBER_SUPPORT|g" \$(grep -rl 'REACT_APP_NUMBER_SUPPORT' .)
+  sed -i "s|https://autoriza.dominio|$REACT_APP_BACKEND_URL|g" $(grep -rl 'https://autoriza.dominio' /home/deployautomatizaai/whaticket/frontend)
   
 EOF
 
-  sleep 10
+  sleep 5
 }
 
 

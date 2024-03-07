@@ -16,37 +16,10 @@ get_backend_url() {
   read -p "> " backend_url
 }
 
-get_name_system() {
-  
-  print_banner
-  printf "${WHITE} 💻 Digite o nome do sistema:${GRAY_LIGHT}"
-  printf "\n\n"
-  read -p "> " name_system
-}
-
-get_primary_color() {
-  
-  print_banner
-  printf "${WHITE} 💻 Digite o codigo da cor primay, EX: #0b5394:${GRAY_LIGHT}"
-  printf "\n\n"
-  read -p "> " primary_color
-}
-
-get_number_support() {
-  
-  print_banner
-  printf "${WHITE} 💻 Digite o numero de suporte:${GRAY_LIGHT}"
-  printf "\n\n"
-  read -p "> " number_support
-}
-
 get_urls() {
   
   get_frontend_url
   get_backend_url
-  get_name_system
-  get_primary_color
-  get_number_support
 }
 
 software_update() {
