@@ -69,9 +69,10 @@ EOF
   sed -i "s|0b5394|\$PRIMARY_COLOR|g" \$(grep -rl 'REACT_APP_PRIMARY_COLOR' .)
   sed -i "s|2c3145|\$PRIMARY_DARK|g" \$(grep -rl 'REACT_APP_PRIMARY_DARK' .)
   sed -i "s|5551997058551|\$NUMBER_SUPPORT|g" \$(grep -rl 'REACT_APP_NUMBER_SUPPORT' .)
+  
 EOF
 
-  sleep 2
+  sleep 10
 }
 
 

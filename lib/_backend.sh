@@ -169,6 +169,15 @@ backend_db_migrate() {
   sudo su - deployautomatizaai <<EOF
   cd /home/deployautomatizaai/whaticket/backend
   npx sequelize db:migrate
+
+EOF
+
+  sleep 2
+
+  sudo su - deployautomatizaai <<EOF
+  cd /home/deployautomatizaai/whaticket/backend
+  npx sequelize db:migrate
+  
 EOF
 
   sleep 2
