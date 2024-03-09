@@ -57,7 +57,7 @@ EOF
   sudo su - deployautomatizaai <<EOF
   cd /home/deployautomatizaai/whaticket/frontend
 
-  BACKEND_URL=$(grep 'REACT_APP_BACKEND_URL' .env | cut -d'=' -f2)
+  BACKEND_URL=${backend_url}
 
   sed -i "s|https://autoriza.dominio|\$BACKEND_URL|g" \$(grep -rl 'https://autoriza.dominio' .)
 EOF
