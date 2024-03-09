@@ -54,14 +54,12 @@ WDS_SOCKET_PORT=0
 EOF
 
   # Execute the substitution commands
-  sudo su - deploywhatstalk <<EOF
+  sudo su - deployautomatizaai <<EOF
   cd /home/deployautomatizaai/whaticket/frontend
 
-  # Substitution commands
-  BACKEND_URL=\$(grep 'REACT_APP_BACKEND_URL' .env | cut -d'=' -f2)
+  BACKEND_URL=$(grep 'REACT_APP_BACKEND_URL' .env | cut -d'=' -f2)
 
-  sed -i "s|https://autoriza.dominio|\$BACKEND_URL|g" \$(grep -rl 'REACT_APP_BACKEND_URL' .)
-  
+  sed -i "s|https://autoriza.dominio|\$BACKEND_URL|g" \$(grep -rl 'https://autoriza.dominio' .)
 EOF
 
   sleep 2
