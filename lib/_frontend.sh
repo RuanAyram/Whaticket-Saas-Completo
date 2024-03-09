@@ -53,19 +53,18 @@ WDS_SOCKET_PORT=0
 [-]EOF
 EOF
 
-  sleep 2
-
-  # Execute a substituição nos arquivos
-  sudo su - deployautomatizaai <<EOF
+  # Execute the substitution commands
+  sudo su - deploywhatstalk <<EOF
   cd /home/deployautomatizaai/whaticket/frontend
 
-   backend_url=$(grep 'REACT_APP_BACKEND_URL' /home/deployautomatizaai/whaticket/frontend/.env | cut -d'=' -f2)
+  # Substitution commands
+  BACKEND_URL=\$(grep 'REACT_APP_BACKEND_URL' .env | cut -d'=' -f2)
 
-  sed -i "s|https://autoriza.dominio|$REACT_APP_BACKEND_URL|g" $(grep -rl 'https://autoriza.dominio' /home/deployautomatizaai/whaticket/frontend)
+  sed -i "s|https://autoriza.dominio|\$BACKEND_URL|g" \$(grep -rl 'REACT_APP_BACKEND_URL' .)
   
 EOF
 
-  sleep 5
+  sleep 2
 }
 
 
